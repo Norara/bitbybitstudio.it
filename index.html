@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bit By Bit STUDIO - Web & App Development</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Press Start 2P", cursive;
+        background: black;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* Scrolling text at top */
+      .scroll-container {
+        background: #ea2264;
+        padding: 25px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+      }
+
+      .scroll-text {
+        display: inline-block;
+        animation: scroll 20s linear infinite;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        padding-right: 100px;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Main content */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Logo container */
+      .logo-container {
+        padding: 20px;
+        /* margin-bottom: 20px; */
+        transition: transform 0.3s ease;
+      }
+
+      .logo-container:hover {
+        transform: translateY(-10px);
+      }
+
+      .logo {
+        max-width: 300px;
+        height: auto;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+      }
+
+      /* Tagline */
+      .tagline {
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        /* margin-bottom: 15px; */
+        text-shadow: 2px 2px 8px rgba(234, 34, 100, 0.5);
+        letter-spacing: 2px;
+      }
+
+      /* Services */
+      .services {
+        color: white;
+        font-size: 12px;
+        /* margin-bottom: 20px; */
+        line-height: 2;
+        max-width: 600px;
+        padding: 20px 40px;
+      }
+
+      .services strong {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* CTA Button */
+      .cta-button {
+        background: #ea2264;
+        color: white;
+        padding: 15px 35px;
+        border: none;
+        border-radius: 0;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+        transition: all 0.3s;
+        box-shadow: none;
+        display: inline-block;
+        margin-top: 10px;
+        position: relative;
+        image-rendering: pixelated;
+        cursor: pointer;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 4px solid transparent;
+        border-image: url("data:image/svg+xml,%3Csvg width='3' height='3' viewBox='0 0 3 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(1)' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(2)' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(0 1)' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(2 1)' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(0 2)' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(1 2)' fill='%23EA2264'/%3E%3Crect width='1' height='1' transform='translate(2 2)' fill='%23EA2264'/%3E%3C/svg%3E")
+          1 stretch;
+      }
+
+      .cta-button:hover {
+        transform: scale(1.05);
+        background: white;
+        color: #ea2264;
+      }
+
+      .cta-button:active {
+        transform: scale(0.95);
+      }
+
+      /* Footer */
+      .footer-border {
+        margin-top: 20px;
+        height: 7px;
+        background-color: white;
+        border-bottom: 2.5px solid black;
+      }
+
+      .footer {
+        background: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .footer,
+      .footer a {
+        color: black;
+        font-size: 12px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        display: inline-block;
+      }
+
+      .footer a:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+
+      /* Floating pixels animation */
+      .pixel {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: #ea2264;
+        animation: float 15s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .scroll-text {
+          font-size: 14px;
+          letter-spacing: 4px;
+        }
+
+        .logo-container {
+          padding: 20px;
+        }
+
+        .logo {
+          max-width: 250px;
+        }
+
+        .tagline {
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+
+        .services {
+          font-size: 10px;
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .cta-button {
+          font-size: 10px;
+          padding: 17px 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scrolling text -->
+    <div class="scroll-container">
+      <div class="scroll-text">
+        THINK DESIGN BUILD • THINK DESIGN BUILD • THINK DESIGN BUILD • THINK
+        DESIGN BUILD • THINK DESIGN BUILD • THINK DESIGN BUILD •
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <!-- Logo -->
+      <div class="logo-container">
+        <img
+          src="BitByBit_Logo_2x.png"
+          alt="Bit By Bit STUDIO Logo"
+          class="logo"
+        />
+      </div>
+
+      <!-- Services -->
+      <div class="services">
+        <div class="tagline">Web & App Development</div>
+        <br />
+        Crafting digital experiences one pixel at a time. We transform your
+        ideas into elegant, functional websites and applications.
+      </div>
+
+      <!-- CTA -->
+      <a href="mailto:nora@bitbybitstudio.it" class="cta-button"
+        >Let's Build Something Amazing</a
+      >
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-border"></div>
+    <div class="footer">
+      per informazioni scriveteci a
+      <a href="mailto:nora@bitbybitstudio.it">nora@bitbybitstudio.it</a>
+    </div>
+
+    <!-- Floating pixels -->
+    <!-- <script>
+      // Create floating pixel elements
+      function createPixels() {
+        const pixelCount = 15;
+        for (let i = 0; i < pixelCount; i++) {
+          const pixel = document.createElement("div");
+          pixel.className = "pixel";
+          pixel.style.left = Math.random() * 100 + "%";
+          pixel.style.animationDelay = Math.random() * 15 + "s";
+          pixel.style.animationDuration = 15 + Math.random() * 10 + "s";
+          document.body.appendChild(pixel);
+        }
+      }
+      createPixels();
+    </script> -->
+  </body>
+</html>
